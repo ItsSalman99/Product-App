@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth','twofactor'])->name('dashboard');
+})->middleware(['auth','twofactor','verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
