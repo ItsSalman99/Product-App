@@ -18,9 +18,11 @@
                     <x-nav-link :href="route('user.products')" :active="request()->routeIs('dashboard')">
                         {{ __('Products') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.createProducts')" :active="request()->routeIs('dashboard')">
-                        {{ __('Add Products') }}
-                    </x-nav-link>
+                    @if (auth()->user()->is_admin)
+                        <x-nav-link :href="route('admin.createProducts')" :active="request()->routeIs('dashboard')">
+                            {{ __('Add Products') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

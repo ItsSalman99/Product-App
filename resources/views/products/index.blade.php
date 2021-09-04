@@ -45,8 +45,8 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
                         @foreach ($products as $item)
+                        <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <h1>{{$item->name}}</h1>
                             </td>
@@ -59,6 +59,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="text-sm">{{date("F j, Y, g:i a", strtotime($item->created_at))}}</span>
                             </td>
+                            @if (auth()->user()->is_admin)
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a href="{{ route('admin.showProduct',$item->id) }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
                                     Update
@@ -72,8 +73,9 @@
                                     </x-button>
                                 </form>
                             </td>
+                            @endif
+                        </tr>
                         @endforeach
-                    </tr>
 
                     </tbody>
                 </table>
